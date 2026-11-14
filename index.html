@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#012324">
+<title>بطاقاتي · التقديم والحضور</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#012324;--cream:#F8F6C3;--orange:#E7551A;--ink:#1E201B;--paper:#FBFAF0;--stone:#5B6157;--otext:#C2410C;--line:#D9D7C4;--olive:#414B33;--tint:#F3F1E4}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;font-size:16px;line-height:1.6}
+.h{font-family:"Noto Naskh Arabic",serif;font-weight:700;color:var(--deep);line-height:1.35}
+header{background:var(--deep);color:var(--cream);padding:14px 18px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:5}
+header img{width:34px;height:auto;border-radius:6px}
+header .t{flex:1;font-weight:500;font-size:14px;line-height:1.3}
+header .t b{display:block;font-size:16px;font-weight:700}
+header button{background:none;border:1px solid rgba(248,246,195,.5);color:var(--cream);border-radius:20px;padding:5px 12px;font:inherit;font-size:13px}
+.bar{height:3px;background:var(--orange);width:33%}
+main{max-width:640px;margin:0 auto;padding:18px 16px 90px}
+.kick{font-size:13px;font-weight:500;color:var(--stone);display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.kick:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
+h1.h{font-size:26px;margin-bottom:6px}
+h2.h{font-size:20px;margin:22px 0 8px}
+.lead{color:var(--stone);font-size:15px;margin-bottom:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.home-item{display:flex;gap:14px;align-items:center;cursor:pointer;text-align:right;width:100%;font:inherit;color:inherit}
+.home-item .n{flex:none;width:44px;height:44px;border-radius:50%;background:var(--deep);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+.home-item .b{flex:1}
+.home-item .b b{display:block;font-size:17px;color:var(--deep)}
+.home-item .b span{font-size:13px;color:var(--stone)}
+.chip{display:inline-block;font-size:12px;font-weight:500;border-radius:20px;padding:2px 10px;border:1px solid var(--line);color:var(--stone);white-space:nowrap}
+.chip.done{background:var(--deep);color:var(--cream);border-color:var(--deep)}
+.chip.part{border-color:var(--orange);color:var(--otext)}
+label{display:block;font-weight:700;font-size:14px;color:var(--deep);margin:14px 0 5px}
+label small{font-weight:400;color:var(--stone);font-size:13px;display:block}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink);direction:rtl}
+textarea{min-height:84px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--deep);outline-offset:-1px;border-color:var(--deep)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;font-size:15px;border-radius:12px;padding:12px 18px;border:none;cursor:pointer;text-decoration:none}
+.btn.p{background:var(--deep);color:var(--cream)}
+.btn.o{background:var(--orange);color:var(--ink)}
+.btn.g{background:var(--tint);color:var(--deep)}
+.btn.w{width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.back{background:none;border:none;font:inherit;color:var(--stone);font-size:14px;margin-bottom:10px;cursor:pointer;padding:4px 0}
+.hint{background:var(--tint);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--ink);margin-top:8px}
+.warn{background:#FCEBE2;border-radius:10px;padding:8px 12px;font-size:13.5px;color:#7a2a0b;margin-top:6px}
+.warn:before{content:"✕  ";font-weight:700;color:var(--otext)}
+.ok{background:#E6EDE7;border-radius:10px;padding:8px 12px;font-size:13.5px;color:var(--deep);margin-top:6px}
+.ok:before{content:"✓  ";font-weight:700}
+.letter{font-family:"Noto Naskh Arabic",serif;font-weight:700;font-size:30px;color:var(--deep);line-height:1}
+.prep-h{display:flex;align-items:baseline;gap:10px}
+.prep-h .letter.e{color:var(--orange)}
+.prep-h b{font-size:16px;color:var(--deep)}
+.prep-h span{font-size:13px;color:var(--stone)}
+.meths{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.meth{font:inherit;font-size:13px;border:1px solid var(--line);background:#fff;border-radius:20px;padding:5px 11px;cursor:pointer;color:var(--deep)}
+.meth.on{background:var(--deep);color:var(--cream);border-color:var(--deep)}
+.star{font:inherit;background:none;border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:13px;cursor:pointer;color:var(--stone)}
+.star.on{background:var(--orange);border-color:var(--orange);color:var(--ink);font-weight:700}
+.crit{display:grid;grid-template-columns:1fr auto auto;gap:8px 12px;align-items:center}
+.crit .nm b{display:block;color:var(--deep)}
+.crit .nm span{font-size:12.5px;color:var(--stone)}
+.crit .v{width:44px;text-align:center;font-weight:700;font-size:18px;border-radius:10px;padding:4px 0;background:var(--tint);color:var(--deep)}
+.crit .v.a{background:var(--deep);color:var(--cream)}
+.crit .hd{font-size:12px;color:var(--stone);text-align:center;font-weight:500}
+.desc{grid-column:1/-1;font-size:12.5px;color:var(--stone);border-bottom:1px solid var(--line);padding-bottom:8px}
+.code{font-family:"IBM Plex Sans Arabic";font-weight:700;font-size:40px;letter-spacing:8px;text-align:center;color:var(--deep);background:var(--tint);border-radius:14px;padding:10px;direction:ltr}
+.codein{direction:ltr;text-align:center;letter-spacing:6px;font-weight:700;font-size:22px !important}
+.steps{display:flex;gap:6px;justify-content:flex-start}
+.steps button{width:38px;height:38px;border-radius:50%;border:1px solid var(--deep);background:#fff;font:inherit;font-weight:700;color:var(--deep);cursor:pointer}
+.steps button.on{background:var(--deep);color:var(--cream)}
+.chk{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px;cursor:pointer}
+.chk input{width:20px;height:20px;accent-color:var(--deep)}
+.cue{position:fixed;inset:0;background:var(--deep);color:var(--cream);z-index:20;display:flex;flex-direction:column;padding:28px 22px;gap:16px;overflow:auto}
+.cue .k{display:flex;gap:14px;align-items:baseline;border-bottom:1px solid rgba(248,246,195,.2);padding-bottom:14px}
+.cue .k i{font-style:normal;font-family:"Noto Naskh Arabic";font-weight:700;font-size:26px;color:#7f8a6c;width:26px}
+.cue .k i.e{color:var(--orange)}
+.cue .k b{font-family:"Noto Naskh Arabic";font-size:30px;line-height:1.3}
+.cue .x{align-self:flex-start;background:none;border:1px solid var(--cream);color:var(--cream);border-radius:20px;padding:6px 16px;font:inherit}
+.timer{font-weight:700;font-size:54px;text-align:center;color:var(--deep);direction:ltr;font-variant-numeric:tabular-nums}
+.timer.big{font-size:96px}
+.log{font-size:14px;color:var(--stone)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--cream);padding:10px 18px;border-radius:24px;font-size:14px;z-index:30;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.s{opacity:1}
+.foot{text-align:center;font-size:12.5px;color:var(--stone);margin-top:28px}
+.foot button{background:none;border:none;font:inherit;color:var(--stone);text-decoration:underline;cursor:pointer}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:middle}
+.store{font-size:12.5px;color:var(--stone);background:var(--tint);border-radius:10px;padding:8px 12px;margin-bottom:14px}
+.cmp{display:flex;gap:4px;align-items:center;font-size:13px}
+.cmp .bb{height:8px;border-radius:4px;background:var(--line)}
+.cmp .ba{height:8px;border-radius:4px;background:var(--deep)}
+</style>
+</head>
+<body>
+<header><img alt="شعار أكاديمية نول" src="data:image/png;base64,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"><div class="t"><b>بطاقاتي</b>التقديم والحضور · اليوم الأول</div><button id="hb" hidden>الرئيسية</button></header>
+<div class="bar"></div>
+<main id="app"></main>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+const KEY="nool-pp-day1-v1";
+let mem=null, persistent=true;
+function load(){try{const r=localStorage.getItem(KEY);return r?JSON.parse(r):null}catch(e){persistent=false;return null}}
+function blank(){return{name:"",rubric:{before:null,after:null,improved:"",workon:"",change:""},prep:{topic:"",t:["","","",""],k:["","","",""],partner:""},open:{items:[{m:-1,t:""},{m:-1,t:""},{m:-1,t:""}],star:-1},fb:[],hw:{topic:"",aud:"",goal:"",openM:-1,open:"",idea:"",pts:"",close:"",keys:"",attempts:[],watched:false,r1:"",r2:"",r3:""},tr:{roster:[]}}}
+let S=load()||blank();
+function deep(a,b){for(const k in b){if(a[k]===undefined)a[k]=b[k];else if(b[k]&&typeof b[k]==="object"&&!Array.isArray(b[k]))deep(a[k],b[k])}return a}
+S=deep(S,blank());
+let saveT=null;
+function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S));persistent=true}catch(e){persistent=false}},250)}
+const $=s=>document.querySelector(s);
+const app=$("#app");
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("s");setTimeout(()=>t.classList.remove("s"),1800)}
+async function copy(txt){try{await navigator.clipboard.writeText(txt);toast("نُسخ النص")}catch(e){showText(txt)}}
+function showText(txt){const d=document.createElement("div");d.className="cue";d.style.background="var(--paper)";d.style.color="var(--ink)";d.innerHTML='<button class="x" style="color:var(--deep);border-color:var(--deep)">إغلاق</button><p style="font-size:14px;color:var(--stone)">لم يسمح المتصفح بالنسخ التلقائي. حدّد النص وانسخه يدويًا:</p><textarea style="min-height:60vh"></textarea>';d.querySelector("textarea").value=txt;d.querySelector(".x").onclick=()=>d.remove();document.body.appendChild(d)}
+function wa(txt){return "https://wa.me/?text="+encodeURIComponent(txt)}
+
+const CRIT=[
+ {h:"وضوح الرسالة",q:"هل نعرف ما الفكرة؟",d:["لا نعرف ما الذي أراد قوله","الفكرة موجودة لكنها غائمة","فكرة واحدة واضحة يمكن تكرارها"]},
+ {h:"قوة البداية",q:"هل شدّتنا الجملة الأولى؟",d:["اعتذار أو تمهيد عام","بداية مقبولة دون أثر","بداية تخلق سببًا للاستماع"]},
+ {h:"تنظيم الأفكار",q:"هل هناك تسلسل نتبعه؟",d:["قفز بين الأفكار","تسلسل يضيع أحيانًا","بداية ومتن وخاتمة واضحة"]},
+ {h:"الأداء الصوتي",q:"وضوح، سرعة، تنغيم، وقفات",d:["خافت أو سريع جدًا أو رتيب","مسموع ومفهوم، قليل التنويع","واضح ومتنوع، بوقفات مقصودة"]},
+ {h:"الجسد والنظر",q:"وقفة، حركة، تواصل بصري",d:["حركات مشتتة أو نظر بعيد","متزن غالبًا مع بعض التشتيت","متزن، يداه تخدمان المعنى، نظره موزع"]}];
+const METH=[
+ {n:"السؤال المحفّز",h:"سؤال يبحث السامع عن إجابته في تجربته. تجنّب ما جوابه نعم أو لا."},
+ {n:"القصة القصيرة",h:"لحظة محددة: شخص، موقف، تحوّل. جملتان أو ثلاث."},
+ {n:"الحقيقة المفاجئة",h:"معلومة صحيحة تكسر توقعًا، ومصدرها معروف لك."},
+ {n:"المشكلة المشتركة",h:"ألم يعرفه الجمهور. «كلنا…» تضعك معهم لا فوقهم."},
+ {n:"تحدّي الافتراض",h:"جملة تعارض فكرة شائعة، ثم تثبتها في حديثك."}];
+const PREP=[["P","الفكرة","قل موقفك مباشرة، في جملة واحدة."],["R","السبب","لماذا تقول ذلك؟ سبب واحد قوي."],["E","المثال","قصة، موقف، دليل، أو رقم تعرف مصدره."],["P","الفكرة مجددًا","أعدها بصياغة أقوى، واربطها بالمطلوب."]];
+const CHK=["افتتاحية تجذب","فكرة واضحة","سبب","مثال","خاتمة موجزة","صوت وجسد ونظر"];
+const OPEN_TOPIC="لماذا يجب أن نتعلم التحدث أمام الجمهور؟";
+
+const words=s=>(s||"").trim().split(/\s+/).filter(Boolean).length;
+function openWarn(m,t){const w=[];const s=(t||"").trim();if(!s)return w;
+ if(/اسمحوا|اسمح لي|اسمحولي/.test(s))w.push("تبدأ باستئذان. احذفه وابدأ بالافتتاحية مباشرة.");
+ if(/مهم(ة)? ج[دًا]+|مهم(ة)? للغاية/.test(s))w.push("«مهم جدًا» ادعاء بلا دليل. أرِهم لماذا هو مهم بدل أن تقول ذلك.");
+ if(/لن أطيل|ما نطولش|ما نطول|باختصار شديد|ما نطوّلش/.test(s))w.push("«لن أطيل» تخفض التوقعات من البداية.");
+ if(/(سأتحدث|سنتحدث|حنتكلم|حنحكي|نتكلم اليوم|سأحدثكم|موضوعنا اليوم)/.test(s))w.push("هذا إعلان عن الموضوع، لا افتتاحية. ابدأ من الجمهور.");
+ if(m===0&&!/[؟?]/.test(s))w.push("اخترت أسلوب السؤال، لكن لا توجد علامة استفهام.");
+ if(m===0&&/^(هل|من منكم|مين فيكم)/.test(s))w.push("هل جوابه «نعم» أو «لا»؟ جرّب «متى»، «ما»، «كيف».");
+ if(m===2&&/[0-9٠-٩%]/.test(s)&&!/(حسب|وفق|دراسة|تقرير|إحصاء|مصدر|بحث|أبحاث)/.test(s))w.push("فيها رقم. ما مصدره؟ إن لم تعرفه فلا تقله.");
+ if(m===1&&words(s)<10)w.push("القصة قصيرة جدًا. أين اللحظة المحددة؟ متى؟ من؟ ماذا حدث؟");
+ if(words(s)>60)w.push("طويلة. الافتتاحية جملة إلى ثلاث جمل.");
+ return w}
+
+/* ------------------ views ------------------ */
+let view="home";
+function go(v){view=v;render();window.scrollTo(0,0)}
+$("#hb").onclick=()=>go("home");
+
+function status(k){
+ if(k==="rubric"){const b=S.rubric.before,a=S.rubric.after;return a&&b?2:(a||b?1:0)}
+ if(k==="prep"){const n=S.prep.t.filter(x=>x.trim()).length;return n===4?2:(n?1:0)}
+ if(k==="open"){const n=S.open.items.filter(x=>x.t.trim()).length;return n===3&&S.open.star>-1?2:(n?1:0)}
+ if(k==="fb"){return S.fb.length>=1?(S.fb.length>=1?2:1):0}
+ if(k==="hw"){const h=S.hw;const f=[h.topic,h.open,h.idea,h.pts,h.close].filter(x=>x.trim()).length;return f===5?2:(f?1:0)}}
+function chip(st){return st===2?'<span class="chip done">مكتملة</span>':st===1?'<span class="chip part">قيد الملء</span>':'<span class="chip">لم تبدأ</span>'}
+
+function vJoin(){
+ app.innerHTML=`<div class="kick">أكاديمية نول</div><h1 class="h">أهلًا بك</h1><p class="lead">هنا بطاقات تمارين اليوم الأول. تملؤها على هاتفك بدل الورق، وتبقى محفوظة في هذا الهاتف.</p>
+ <div class="card"><label>اسمك<small>يظهر في البطاقات التي ترسلها لزملائك وللمدرب</small></label><input type="text" id="nm" autocomplete="name"><div style="height:14px"></div><button class="btn p w" id="go">ابدأ</button></div>`;
+ $("#go").onclick=()=>{const v=$("#nm").value.trim();if(!v){toast("اكتب اسمك أولًا");return}S.name=v;save();go("home")}}
+
+function vHome(){
+ const items=[["rubric","1","بطاقة التقييم","تُفتح بعد التحدي الأول، ومرة أخرى في آخر اليوم"],["prep","2","قالب PREP","تحدّي الدقيقة الواحدة · المحور الرابع"],["open","3","تمرين الافتتاحيات","ثلاث بدايات لموضوع واحد · المحور الخامس"],["fb","4","التغذية الراجعة","حين تكون أنت الملاحظ · التطبيق النهائي"],["hw","5","التكليف المنزلي","عرض الدقيقتين لليوم الثاني"]];
+ app.innerHTML=`<div class="kick">مرحبًا ${esc(S.name)}</div><h1 class="h">بطاقات اليوم الأول</h1><p class="lead">افتح كل بطاقة حين يطلبها المدرب. كل ما تكتبه يُحفظ تلقائيًا.</p>
+ ${persistent?"":'<div class="store">هذا المتصفح لا يسمح بالحفظ. لا تغلق الصفحة، وانسخ بطاقاتك قبل أن تغادر.</div>'}
+ ${items.map(i=>`<button class="card home-item" data-v="${i[0]}"><span class="n">${i[1]}</span><span class="b"><b>${i[2]}</b><span>${i[3]}</span></span>${chip(status(i[0]))}</button>`).join("")}
+ <div class="card"><b class="h" style="font-size:17px">احتفظ بنسخة</b><p class="log" style="margin:4px 0 10px">انسخ كل بطاقاتك نصًا واحدًا، أو أرسلها لنفسك على واتساب.</p><div class="row"><button class="btn g" id="cpall">نسخ الكل</button><a class="btn g" id="waall" href="#" target="_blank" rel="noopener">واتساب</a></div></div>
+ <div class="foot">لست ${esc(S.name)}؟ <button id="rn">غيّر الاسم</button> · <button id="tr">وضع المدرب</button></div>`;
+ app.querySelectorAll(".home-item").forEach(b=>b.onclick=()=>go(b.dataset.v));
+ const all=exportAll();$("#cpall").onclick=()=>copy(all);$("#waall").href=wa(all);
+ $("#rn").onclick=()=>{S.name="";save();go("join")};$("#tr").onclick=()=>go("trainer")}
+
+function head(k,t,l){return `<button class="back" data-b>→ البطاقات</button><div class="kick">${k}</div><h1 class="h">${t}</h1><p class="lead">${l}</p>`}
+function bindBack(){app.querySelectorAll("[data-b]").forEach(b=>b.onclick=()=>go("home"))}
+function bindInputs(){app.querySelectorAll("[data-p]").forEach(el=>{el.addEventListener("input",()=>{setPath(el.dataset.p,el.type==="checkbox"?el.checked:el.value);save();if(el.dataset.live)live(el.dataset.live)})})}
+function getPath(p){return p.split(".").reduce((o,k)=>o==null?o:o[k],S)}
+function setPath(p,v){const ks=p.split(".");let o=S;for(let i=0;i<ks.length-1;i++)o=o[ks[i]];o[ks[ks.length-1]]=v}
+function parseCode(c){c=(c||"").replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/\D/g,"");if(c.length!==5)return null;const a=c.split("").map(Number);return a.every(x=>x>=1&&x<=5)?a:null}
+
+/* 1 rubric */
+function vRubric(){
+ const b=S.rubric.before,a=S.rubric.after,sum=x=>x?x.reduce((p,c)=>p+c,0):null;
+ app.innerHTML=head("البطاقة 1","بطاقة التقييم","خمسة معايير، من 1 إلى 5. «قبل» من المدرب بعد التحدي الأول، و«بعد» من ملاحظك في التطبيق النهائي. الدرجات لك وحدك.")+
+ `<div class="card"><label>رمز «قبل» من المدرب<small>خمسة أرقام، مثل 32423</small></label><div class="row"><input type="text" inputmode="numeric" class="codein" id="cb" maxlength="5" value="${b?b.join(""):""}" style="flex:1"><button class="btn p" id="sb">حفظ</button></div>
+ <label>رمز «بعد» من ملاحظك</label><div class="row"><input type="text" inputmode="numeric" class="codein" id="ca" maxlength="5" value="${a?a.join(""):""}" style="flex:1"><button class="btn p" id="sa">حفظ</button></div></div>
+ <div class="card"><div class="crit"><div></div><div class="hd">قبل</div><div class="hd">بعد</div>
+ ${CRIT.map((c,i)=>`<div class="nm"><b>${c.h}</b><span>${c.q}</span></div><div class="v">${b?b[i]:"–"}</div><div class="v a">${a?a[i]:"–"}</div><div class="desc">1: ${c.d[0]} · 3: ${c.d[1]} · 5: ${c.d[2]}</div>`).join("")}
+ <div class="nm"><b>المجموع</b><span>من 25</span></div><div class="v">${sum(b)??"–"}</div><div class="v a">${sum(a)??"–"}</div></div>
+ <div class="hint" style="margin-top:12px">اختلاف الموضوع والمدة وظروف الأداء يؤثر في النتيجة. المقارنة مؤشر أولي، لا حكم نهائي.</div></div>
+ <div class="card"><label>التعديل الواحد الذي اقترحه ملاحظك</label><input type="text" data-p="rubric.change" value="${esc(S.rubric.change)}">
+ <label>معيار تحسّن فعلًا</label><input type="text" data-p="rubric.improved" value="${esc(S.rubric.improved)}">
+ <label>معيار سأعمل عليه</label><input type="text" data-p="rubric.workon" value="${esc(S.rubric.workon)}"></div>`;
+ bindBack();bindInputs();
+ $("#sb").onclick=()=>{const v=parseCode($("#cb").value);if(!v){toast("الرمز خمسة أرقام من 1 إلى 5");return}S.rubric.before=v;save();vRubric();toast("حُفظ")};
+ $("#sa").onclick=()=>{const v=parseCode($("#ca").value);if(!v){toast("الرمز خمسة أرقام من 1 إلى 5");return}S.rubric.after=v;save();vRubric();toast("حُفظ")}}
+
+/* 2 PREP */
+function vPrep(){
+ const P=S.prep;
+ app.innerHTML=head("البطاقة 2 · تحدّي الدقيقة الواحدة","قالب PREP","اكتب بكلمات قليلة لا بنص كامل، ثم كلمة مفتاحية واحدة لكل جزء. هاتفك سيصبح بطاقة الكلمات.")+
+ `<div class="card"><label>موقفي / موضوعي</label><input type="text" data-p="prep.topic" value="${esc(P.topic)}" placeholder="مثل: لماذا يجب أن تبدأ الاجتماعات في وقتها"></div>
+ ${PREP.map((x,i)=>`<div class="card"><div class="prep-h"><span class="letter ${i===2?"e":""}">${x[0]}</span><b>${x[1]}</b><span>${x[2]}</span></div>
+ <textarea data-p="prep.t.${i}" data-live="prep${i}">${esc(P.t[i])}</textarea><div id="lw-prep${i}"></div>
+ <label>الكلمة المفتاحية</label><input type="text" data-p="prep.k.${i}" data-live="prepk${i}" value="${esc(P.k[i])}"><div id="lw-prepk${i}"></div></div>`).join("")}
+ <button class="btn o w" id="cue">اعرض بطاقة الكلمات المفتاحية</button>
+ <div class="card" style="margin-top:12px"><label>بعد أن قدّمت لشريكك: هل استطاع أن يقول فكرتك في جملة واحدة؟</label>
+ <div class="row"><button class="star ${P.partner==="y"?"on":""}" data-pt="y">نعم</button><button class="star ${P.partner==="n"?"on":""}" data-pt="n">لا</button></div><div id="ptx"></div></div>`;
+ bindBack();bindInputs();[0,1,2,3].forEach(i=>{live("prep"+i);live("prepk"+i)});
+ $("#cue").onclick=()=>cue([["P",P.k[0]],["R",P.k[1]],["E",P.k[2]],["P",P.k[3]]],P.topic);
+ app.querySelectorAll("[data-pt]").forEach(b=>b.onclick=()=>{P.partner=b.dataset.pt;save();vPrep()});
+ if(P.partner==="n")$("#ptx").innerHTML='<div class="hint">غالبًا المشكلة في P الأولى: غائبة، أو غامضة، أو مدفونة في كلام كثير. أعد صياغتها في جملة واحدة يمكن أن يكررها السامع.</div>';
+ if(P.partner==="y")$("#ptx").innerHTML='<div class="ok">فكرتك وصلت. هذا هو اختبار الوضوح.</div>'}
+function live(id){const box=$("#lw-"+id);if(!box)return;let h="";
+ if(id.startsWith("prepk")){const i=+id[5];if(words(S.prep.k[i])>4)h='<div class="warn">الكلمة المفتاحية طويلة. كلمة أو كلمتان تكفي، وإلا ستقرؤها بدل أن تتذكر.</div>'}
+ else if(id.startsWith("prep")){const i=+id[4],t=S.prep.t[i];if(i===0&&words(t)>25)h='<div class="warn">الفكرة طويلة. هل تستطيع قولها في جملة واحدة؟</div>';if(words(t)>70)h+='<div class="warn">هذا نص كامل تقريبًا. اختصر إلى كلمات قليلة.</div>'}
+ else if(id.startsWith("op")){const i=+id[2],it=S.open.items[i];h=openWarn(it.m,it.t).map(w=>`<div class="warn">${w}</div>`).join("");if(!h&&it.t.trim()&&it.m>-1&&words(it.t)>=6)h='<div class="ok">لا ألاحظ أخطاء شائعة. جرّبها بصوت عالٍ.</div>'}
+ box.innerHTML=h}
+function cue(list,title){const d=document.createElement("div");d.className="cue";
+ d.innerHTML=`<button class="x">إغلاق</button>${title?`<div style="font-size:15px;opacity:.75">${esc(title)}</div>`:""}`+list.filter(x=>x[1]&&x[1].trim()).map((x,i)=>`<div class="k"><i class="${x[0]==="E"?"e":""}">${x[0]}</i><b>${esc(x[1])}</b></div>`).join("")+(list.some(x=>x[1]&&x[1].trim())?"":'<p>لم تكتب كلمات مفتاحية بعد.</p>');
+ d.querySelector(".x").onclick=()=>d.remove();document.body.appendChild(d)}
+
+/* 3 openings */
+function vOpen(){
+ const O=S.open;
+ app.innerHTML=head("البطاقة 3","تمرين الافتتاحيات","ثلاث افتتاحيات بثلاثة أساليب مختلفة، ثم اختر أقواها وقدّمها لمجموعتك.")+
+ `<div class="card" style="background:var(--tint);border:none"><b class="h" style="font-size:18px">الموضوع: ${OPEN_TOPIC}</b></div>
+ <details class="card"><summary style="cursor:pointer;font-weight:700;color:var(--deep)">الأساليب الخمسة</summary>${METH.map((m,i)=>`<p style="margin-top:8px"><b>${i+1}. ${m.n}:</b> ${m.h}</p>`).join("")}</details>
+ ${O.items.map((it,i)=>`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><b class="h" style="font-size:17px">الافتتاحية ${["الأولى","الثانية","الثالثة"][i]}</b><button class="star ${O.star===i?"on":""}" data-st="${i}">${O.star===i?"★ اخترتها":"☆ اخترها"}</button></div>
+ <div class="meths">${METH.map((m,j)=>`<button class="meth ${it.m===j?"on":""}" data-i="${i}" data-m="${j}">${m.n}</button>`).join("")}</div>
+ <textarea data-p="open.items.${i}.t" data-live="op${i}">${esc(it.t)}</textarea><div id="lw-op${i}"></div></div>`).join("")}
+ <div class="hint">سؤال مجموعتك بعد أن تقدّم: أي أسلوب استخدمت؟ وهل أرادوا أن يسمعوا البقية؟</div>`;
+ bindBack();bindInputs();[0,1,2].forEach(i=>live("op"+i));
+ app.querySelectorAll(".meth").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,m=+b.dataset.m;const used=O.items.some((x,k)=>k!==i&&x.m===m);O.items[i].m=m;save();vOpen();if(used)toast("هذا الأسلوب مستخدم في افتتاحية أخرى. التمرين: ثلاثة أساليب مختلفة")});
+ app.querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{O.star=+b.dataset.st;save();vOpen()})}
+
+/* 4 feedback */
+let fbDraft=null;
+function newFb(){return{round:S.fb.length%3+1,speaker:"",chk:[false,false,false,false,false,false],s:"",i:"",c:"",sc:[0,0,0,0,0]}}
+function vFb(){
+ if(!fbDraft)fbDraft=newFb();const F=fbDraft;
+ app.innerHTML=head("البطاقة 4 · أنت الملاحظ","التغذية الراجعة","ثلاثة أشياء فقط: نقطة قوة محددة، ونقطة تحتاج إلى تحسين، وتعديل واحد. محدد، قابل للملاحظة، واحد فقط.")+
+ `<div class="card"><label>المتحدث</label><input type="text" id="fsp" value="${esc(F.speaker)}">
+ <label>الجولة</label><div class="steps">${[1,2,3].map(r=>`<button class="${F.round===r?"on":""}" data-r="${r}">${r}</button>`).join("")}</div></div>
+ <div class="card"><label style="margin-top:0">هل تضمّن العرض…</label>${CHK.map((c,i)=>`<label class="chk" style="margin:0;font-weight:400;color:var(--ink)"><input type="checkbox" data-c="${i}" ${F.chk[i]?"checked":""}>${c}</label>`).join("")}</div>
+ <div class="card"><label style="margin-top:0">1 · نقطة قوة محددة<small>ماذا رأيت أو سمعت بالضبط؟ مثل: «بدأت بسؤال جعلني أفكر في تجربتي»</small></label><textarea id="fs">${esc(F.s)}</textarea><div id="w-fs"></div>
+ <label>2 · نقطة تحتاج إلى تحسين<small>سلوك يمكن ملاحظته، لا صفة. مثل: «تسارعت كثيرًا عند المثال»</small></label><textarea id="fi">${esc(F.i)}</textarea><div id="w-fi"></div>
+ <label>3 · تعديل واحد للمحاولة التالية<small>واحد فقط، يمكن تنفيذه فورًا. مثل: «خذ وقفة قبل الخاتمة»</small></label><textarea id="fc" style="min-height:60px">${esc(F.c)}</textarea></div>
+ <div class="card"><label style="margin-top:0">الدرجات · من 1 إلى 5</label>${CRIT.map((c,i)=>`<div style="margin:10px 0 4px;font-weight:700;color:var(--deep);font-size:14px">${c.h} <span style="font-weight:400;color:var(--stone);font-size:12.5px">${c.q}</span></div><div class="steps">${[1,2,3,4,5].map(v=>`<button class="${F.sc[i]===v?"on":""}" data-k="${i}" data-v="${v}">${v}</button>`).join("")}</div>`).join("")}</div>
+ <button class="btn p w" id="fdone">جاهز: اعرض الرمز للمتحدث</button>
+ ${S.fb.length?`<h2 class="h">ما أرسلته سابقًا</h2>${S.fb.map((f,k)=>`<div class="card" style="padding:12px"><b>${esc(f.speaker||"—")}</b> · الجولة ${f.round} · الرمز <b style="direction:ltr;display:inline-block">${f.sc.join("")}</b> <button class="btn g" style="padding:4px 10px;font-size:13px;margin-right:6px" data-sh="${k}">اعرض</button></div>`).join("")}`:""}`;
+ bindBack();
+ const sync=()=>{F.speaker=$("#fsp").value;F.s=$("#fs").value;F.i=$("#fi").value;F.c=$("#fc").value;fbWarn()};
+ ["#fsp","#fs","#fi","#fc"].forEach(s=>$(s).addEventListener("input",sync));fbWarn();
+ app.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{sync();F.round=+b.dataset.r;vFb()});
+ app.querySelectorAll("[data-c]").forEach(b=>b.onchange=()=>{F.chk[+b.dataset.c]=b.checked});
+ app.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{sync();F.sc[+b.dataset.k]=+b.dataset.v;vFb()});
+ app.querySelectorAll("[data-sh]").forEach(b=>b.onclick=()=>fbResult(S.fb[+b.dataset.sh]));
+ $("#fdone").onclick=()=>{sync();if(!F.speaker.trim()){toast("اكتب اسم المتحدث");return}if(F.sc.some(x=>!x)){toast("أكمل الدرجات الخمس");return}if(!F.s.trim()||!F.i.trim()||!F.c.trim()){toast("أكمل النقاط الثلاث");return}S.fb.push(JSON.parse(JSON.stringify(F)));save();fbDraft=null;fbResult(S.fb[S.fb.length-1])}}
+function fbWarn(){const vague=/^(كان )?(كويس|حلو|جميل|ممتاز|زين|باهي|تمام|جيد)[.!]?$/;const gen=/(ثقة|واثق|كاريزما|متوتر|خجول)/;
+ const a=$("#fs").value.trim(),b=$("#fi").value.trim();
+ $("#w-fs").innerHTML=a&&(vague.test(a)||words(a)<3)?'<div class="warn">عامة جدًا. ما الذي فعله بالضبط فأعجبك؟</div>':"";
+ $("#w-fi").innerHTML=b&&gen.test(b)?'<div class="warn">هذه صفة لا سلوك. ماذا رأيت أو سمعت جعلك تقول ذلك؟</div>':""}
+function fbText(f){return `تغذية راجعة من ${S.name} · التطبيق النهائي، الجولة ${f.round}\n\nإلى: ${f.speaker}\n\n✓ نقطة قوة: ${f.s}\n• تحتاج إلى تحسين: ${f.i}\n→ تعديل واحد: ${f.c}\n\nرمز «بعد» لبطاقة التقييم: ${f.sc.join("")}\n(${CRIT.map((c,i)=>c.h+" "+f.sc[i]).join(" · ")})`}
+function fbResult(f){app.innerHTML=`<button class="back" data-b>→ البطاقات</button><div class="kick">أرِ هذه الشاشة لـ${esc(f.speaker)}</div><h1 class="h">رمز «بعد»</h1><p class="lead">يكتبه المتحدث في البطاقة 1 على هاتفه.</p><div class="code">${f.sc.join("")}</div>
+ <div class="card" style="margin-top:14px"><p><b style="color:var(--deep)">نقطة قوة:</b> ${esc(f.s)}</p><p style="margin-top:6px"><b style="color:var(--deep)">تحتاج إلى تحسين:</b> ${esc(f.i)}</p><p style="margin-top:6px"><b style="color:var(--otext)">تعديل واحد:</b> ${esc(f.c)}</p></div>
+ <div class="row"><a class="btn o" style="flex:1" href="${wa(fbText(f))}" target="_blank" rel="noopener">أرسلها على واتساب</a><button class="btn g" id="cpf">نسخ</button></div>
+ <div style="height:10px"></div><button class="btn p w" id="nx">ملاحظة جديدة للجولة التالية</button>`;
+ bindBack();$("#cpf").onclick=()=>copy(fbText(f));$("#nx").onclick=()=>{fbDraft=null;vFb()}}
+
+/* 5 homework */
+let tmr=null,t0=0;
+function vHw(){
+ const h=S.hw;
+ app.innerHTML=head("البطاقة 5","التكليف المنزلي","عرض مدته دقيقتان، في موضوع تختاره، تحضره إلى اليوم الثاني. بالكلمات المفتاحية، لا بالحفظ الحرفي.")+
+ `<div class="card"><label>الموضوع</label><input type="text" data-p="hw.topic" value="${esc(h.topic)}">
+ <label>لمن أتحدث؟</label><input type="text" data-p="hw.aud" value="${esc(h.aud)}">
+ <label>ماذا أريد منهم بعد حديثي؟</label><input type="text" data-p="hw.goal" value="${esc(h.goal)}"></div>
+ <div class="card"><label style="margin-top:0">الافتتاحية</label><div class="meths">${METH.map((m,j)=>`<button class="meth ${h.openM===j?"on":""}" data-hm="${j}">${m.n}</button>`).join("")}</div>
+ <textarea data-p="hw.open" data-live="hwo">${esc(h.open)}</textarea><div id="lw-hwo"></div>
+ <label>الفكرة الأساسية<small>جملة واحدة</small></label><input type="text" data-p="hw.idea" value="${esc(h.idea)}">
+ <label>النقاط الداعمة<small>ثلاث كحد أقصى، نقطة في كل سطر</small></label><textarea data-p="hw.pts" data-live="hwp">${esc(h.pts)}</textarea><div id="lw-hwp"></div>
+ <label>الخاتمة<small>لخّص الرسالة ووضّح الخطوة التالية</small></label><textarea data-p="hw.close" style="min-height:60px">${esc(h.close)}</textarea></div>
+ <div class="card"><label style="margin-top:0">بطاقة الكلمات المفتاحية<small>كلمة أو كلمتان لكل جزء، سطر لكل جزء</small></label><textarea data-p="hw.keys">${esc(h.keys)}</textarea>
+ <div style="height:10px"></div><button class="btn o w" id="hcue">اعرض البطاقة</button></div>
+ <div class="card"><label style="margin-top:0">تدرّب بصوت عالٍ<small>مرتان على الأقل. الهدف قرابة دقيقتين.</small></label>
+ <div class="timer" id="tm">0:00</div><div class="row" style="justify-content:center"><button class="btn p" id="tst">ابدأ محاولة</button></div>
+ <div class="log" id="tlog" style="margin-top:10px">${h.attempts.length?h.attempts.map((s,i)=>`المحاولة ${i+1}: ${fmt(s)}${s>150?" · أطول من اللازم":s<90?" · أقصر من اللازم":" · مناسبة"}`).join("<br>"):"لا محاولات بعد."}</div>
+ <label class="chk" style="margin-top:12px;font-weight:400;color:var(--ink)"><input type="checkbox" data-p="hw.watched" ${h.watched?"checked":""}>شاهدت مقطعيّ «قبل» و«بعد» مرة واحدة</label></div>
+ <div class="card"><label style="margin-top:0">ما الخطأ الأبرز الذي اكتشفته في أدائك؟</label><textarea data-p="hw.r1" style="min-height:60px">${esc(h.r1)}</textarea>
+ <label>ما المهارة التي ساعدتك أكثر؟</label><textarea data-p="hw.r2" style="min-height:60px">${esc(h.r2)}</textarea>
+ <label>ما الشيء الذي ستطبقه في المرة القادمة؟</label><textarea data-p="hw.r3" style="min-height:60px">${esc(h.r3)}</textarea></div>
+ <div class="row"><a class="btn p" style="flex:1" href="${wa(hwText())}" target="_blank" rel="noopener" id="hwa">أرسل للمدرب على واتساب</a><button class="btn g" id="hcp">نسخ</button></div>
+ <p class="foot" style="margin-top:14px">لا تنتظر حتى تختفي رهبتك لتتحدث. تعلّم كيف تتحدث رغم وجودها.</p>`;
+ bindBack();bindInputs();live2();
+ app.querySelectorAll("[data-p]").forEach(el=>el.addEventListener("input",()=>{live2();$("#hwa").href=wa(hwText())}));
+ app.querySelectorAll("[data-hm]").forEach(b=>b.onclick=()=>{h.openM=+b.dataset.hm;save();vHw()});
+ $("#hcue").onclick=()=>cue(h.keys.split("\n").filter(x=>x.trim()).map((k,i,a)=>[String(i+1),k]),h.topic);
+ $("#hcp").onclick=()=>copy(hwText());
+ $("#tst").onclick=()=>{if(tmr){clearInterval(tmr);tmr=null;const s=Math.round((Date.now()-t0)/1000);h.attempts.push(s);save();vHw();return}t0=Date.now();$("#tst").textContent="أنهِ المحاولة";tmr=setInterval(()=>{const el=$("#tm");if(!el){clearInterval(tmr);tmr=null;return}const s=(Date.now()-t0)/1000;el.textContent=fmt(s);el.style.color=s>120?"var(--otext)":"var(--deep)"},250)}}
+function live2(){const h=S.hw;const a=$("#lw-hwo"),b=$("#lw-hwp");if(a)a.innerHTML=openWarn(h.openM,h.open).map(w=>`<div class="warn">${w}</div>`).join("");if(b){const n=h.pts.split("\n").filter(x=>x.trim()).length;b.innerHTML=n>3?'<div class="warn">أكثر من ثلاث نقاط. اختر الأقوى.</div>':""}}
+function fmt(s){s=Math.floor(s);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
+function hwText(){const h=S.hw;return `التكليف المنزلي · ${S.name}\nالتقديم والحضور · اليوم الأول\n\nالموضوع: ${h.topic}\nالجمهور: ${h.aud}\nالمطلوب منهم: ${h.goal}\n\nالافتتاحية (${h.openM>-1?METH[h.openM].n:"—"}): ${h.open}\nالفكرة: ${h.idea}\nالنقاط:\n${h.pts}\nالخاتمة: ${h.close}\n\nمحاولات التدريب: ${h.attempts.map(fmt).join("، ")||"—"}\nشاهدت المقطعين: ${h.watched?"نعم":"لا"}\n\nتأمل:\n1. ${h.r1}\n2. ${h.r2}\n3. ${h.r3}`}
+function exportAll(){const r=S.rubric,P=S.prep,O=S.open;return `بطاقاتي · ${S.name}\nالتقديم والحضور · اليوم الأول · أكاديمية نول\n\n— التقييم —\nقبل: ${r.before?r.before.join(""):"—"} · بعد: ${r.after?r.after.join(""):"—"}\nتعديل اقترحه الملاحظ: ${r.change}\nتحسّن: ${r.improved} · سأعمل على: ${r.workon}\n\n— PREP —\n${P.topic}\nP: ${P.t[0]} [${P.k[0]}]\nR: ${P.t[1]} [${P.k[1]}]\nE: ${P.t[2]} [${P.k[2]}]\nP: ${P.t[3]} [${P.k[3]}]\n\n— الافتتاحيات —\n${O.items.map((x,i)=>`${O.star===i?"★ ":""}${x.m>-1?METH[x.m].n:"—"}: ${x.t}`).join("\n")}\n\n— ${hwText()}`}
+
+/* trainer */
+function vTrainer(){
+ const R=S.tr.roster;
+ app.innerHTML=`<button class="back" data-b>→ البطاقات</button><div class="kick">للمدرب فقط · يُحفظ في هذا الهاتف</div><h1 class="h">وضع المدرب</h1><p class="lead">سجّل درجات التحدي الأول لكل مشارك، ثم أرسل له رمزه على واتساب أو أره إياه. الدرجات لا تُرسل لأي أحد آخر.</p>
+ <div class="card"><label style="margin-top:0">مؤقت</label><div class="timer big" id="ttm">0:45</div>
+ <div class="row" style="justify-content:center;margin-bottom:8px">${[[45,"0:45"],[60,"1:00"],[120,"2:00"],[240,"4:00"],[300,"5:00"],[600,"10:00"]].map(x=>`<button class="btn g" style="padding:8px 12px" data-ts="${x[0]}">${x[1]}</button>`).join("")}</div>
+ <div class="row" style="justify-content:center"><button class="btn p" id="tgo">ابدأ</button><button class="btn g" id="trs">إعادة</button></div></div>
+ <div class="card"><label style="margin-top:0">إضافة مشاركين<small>اسم في كل سطر</small></label><textarea id="adds" style="min-height:70px"></textarea><div style="height:8px"></div><button class="btn p" id="addb">أضف</button></div>
+ ${R.map((p,k)=>`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><b class="h" style="font-size:18px">${k+1}. ${esc(p.name)}</b><span class="code" style="font-size:20px;letter-spacing:4px;padding:2px 10px">${p.sc.every(x=>x)?p.sc.join(""):"—"}</span></div>
+ ${CRIT.map((c,i)=>`<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px"><span style="font-size:13.5px;color:var(--deep);font-weight:500">${c.h}</span><div class="steps">${[1,2,3,4,5].map(v=>`<button style="width:32px;height:32px" class="${p.sc[i]===v?"on":""}" data-p2="${k}" data-k="${i}" data-v="${v}">${v}</button>`).join("")}</div></div>`).join("")}
+ <label>ملاحظة سلوكية واحدة</label><input type="text" data-note="${k}" value="${esc(p.note)}" placeholder="مثل: بدأ بالاعتذار">
+ ${p.sc.every(x=>x)?`<div class="row" style="margin-top:10px"><a class="btn o" style="flex:1" target="_blank" rel="noopener" href="${wa(`${p.name}، هذه نتيجتك في التحدي الأول (45 ثانية).\nاكتب الرمز في البطاقة 1 تحت «قبل»: ${p.sc.join("")}\n(${CRIT.map((c,i)=>c.h+" "+p.sc[i]).join(" · ")})`+(p.note?`\nملاحظة: ${p.note}`:"")+"\nهذه نقطة البداية فقط، والمهم الفرق آخر اليوم.")}">أرسل له على واتساب</a></div>`:""}</div>`).join("")}`;
+ bindBack();
+ $("#addb").onclick=()=>{$("#adds").value.split("\n").map(x=>x.trim()).filter(Boolean).forEach(n=>R.push({name:n,sc:[0,0,0,0,0],note:""}));save();vTrainer()};
+ app.querySelectorAll("[data-p2]").forEach(b=>b.onclick=()=>{R[+b.dataset.p2].sc[+b.dataset.k]=+b.dataset.v;save();const y=window.scrollY;vTrainer();window.scrollTo(0,y)});
+ app.querySelectorAll("[data-note]").forEach(i=>i.oninput=()=>{R[+i.dataset.note].note=i.value;save()});
+ let left=45,preset=45,iv=null;const show=()=>{const el=$("#ttm");if(el){el.textContent=fmt(Math.max(0,left));el.style.color=left<=10?"var(--otext)":"var(--deep)"}};
+ app.querySelectorAll("[data-ts]").forEach(b=>b.onclick=()=>{clearInterval(iv);iv=null;left=preset=+b.dataset.ts;$("#tgo").textContent="ابدأ";show()});
+ $("#tgo").onclick=()=>{if(iv){clearInterval(iv);iv=null;$("#tgo").textContent="استمر";return}$("#tgo").textContent="إيقاف";const end=Date.now()+left*1000;iv=setInterval(()=>{if(!$("#ttm")){clearInterval(iv);return}left=(end-Date.now())/1000;show();if(left<=0){clearInterval(iv);iv=null;$("#tgo").textContent="ابدأ";$("#ttm").textContent="انتهى"}},200)};
+ $("#trs").onclick=()=>{clearInterval(iv);iv=null;left=preset;$("#tgo").textContent="ابدأ";show()}}
+
+function render(){$("#hb").hidden=(view==="home"||view==="join");
+ if(!S.name&&view!=="trainer")view="join";
+ ({join:vJoin,home:vHome,rubric:vRubric,prep:vPrep,open:vOpen,fb:vFb,hw:vHw,trainer:vTrainer})[view]()}
+render();
+})();
+</script>
+</body>
+</html>
